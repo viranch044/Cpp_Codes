@@ -24,7 +24,7 @@ public:
         int left,right = nums.size()-1;
         vector<vector<int>> res;
         for(int i=0;i<n-1;i++){
-            if((i!=0 and nums[i-1]!=nums[i]) or i==0 ){
+            if((i!=0 and nums[i-1]!=nums[i]) or i==0 ){                                 // First condition is for avoiding same pairs
                     int curr = nums[i]*-1;
                     left = i+1;
                     right = n-1;
@@ -33,7 +33,7 @@ public:
                         if(nums[left]+nums[right]>curr) right--;
                         else if(nums[left]+nums[right]<curr) left++;
                         else{
-                        if(!m[nums[left]])
+                        if(!m[nums[left]])                                              // map to avoid same duplcate pairs
                         {
                             res.push_back({nums[i],nums[left],nums[right]});
                             m[nums[left]] = true;
