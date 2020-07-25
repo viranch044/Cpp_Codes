@@ -51,3 +51,27 @@ public:
         return rightpos+2;
     }
 };
+
+
+
+// Other solution 
+
+// Approch in this is to place number i to i-1 postition in the array and negative and values greater than n will be ignored
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int> A)
+    {
+        int n = A.size();
+        for(int i = 0; i < n; ++ i) {
+            while(A[i] >= 1 && A[i] <= n && A[i] != A[A[i]-1])
+                swap(A[i], A[A[i] - 1]);
+        }
+        
+        for(int i = 0; i < n; ++ i)
+            if(A[i] != i + 1)
+                return i + 1;
+        
+        return n + 1;
+    }
+};
